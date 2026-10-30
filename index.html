@@ -184,7 +184,7 @@ document.onkeydown = e => {
 render();
 
 // Map woordenlijsten/ naast index.html: werkt via een webserver die de mapindex toont (python3 -m http.server).
-// Nieuwe bestanden worden toegevoegd; bestaande lijsten blijven ongemoeid (voortgang/aanpassingen blijven).
+// Nieuwe bestanden worden toegevoegd; bestaande lijsten blijven ongemoeid, behalve bij een MAPV-verhoging.
 (async () => {
   try {
     // Netlify toont geen mapindex: daar maakt de build woordenlijsten/index.json (zie netlify.toml)
@@ -192,12 +192,18 @@ render();
     try { const r = await fetch('woordenlijsten/index.json'); if (!r.ok) throw 0; files = await r.json(); }
     catch { const dir = await (await fetch('woordenlijsten/')).text(); files = [...dir.matchAll(/href="([^"?#]+\.(?:txt|tsv))"/gi)].map(m => decodeURIComponent(m[1].split('/').pop())); }
     let added = 0;
+    // MAPV ophogen = bij iedereen 1x de lijsten uit de map opnieuw inlezen (eigen aanpassingen daaraan gaan verloren, voortgang blijft)
+    const MAPV = 1, force = (+localStorage.mapv || 0) < MAPV;
     for (const f of new Set(files)) {
       const name = f.replace(/\.\w+$/, '');
-      if (decks[name]) continue;
+      if (decks[name] && !force) continue;
       const cards = parse(await (await fetch('woordenlijsten/' + encodeURIComponent(f))).text());
-      if (cards.length) { addDeck(name, cards); added++; }
+      if (!cards.length) continue;
+      if (decks[name]) { decks[name].cards = cards; for (const i in decks[name].known) if (i >= cards.length) delete decks[name].known[i]; }
+      else addDeck(name, cards);
+      added++;
     }
+    try { localStorage.mapv = MAPV; } catch {}
     if (added) { save(); if (!md) render(); }
   } catch {} // geen server of geen map: negeren
 })();
