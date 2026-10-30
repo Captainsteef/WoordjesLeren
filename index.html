@@ -55,6 +55,7 @@
       <b id="mname" style="align-self:center;flex:1"></b>
     </div>
     <div class="row">
+      <button onclick="exportDeck()">Exporteer .txt</button>
       <button onclick="rename()">Hernoemen</button>
       <button onclick="reset()">Voortgang wissen</button>
       <button onclick="del()">Lijst verwijderen</button>
@@ -163,6 +164,12 @@ function rename() {
   if (!n || n == md || (decks[n] && !confirm(`"${n}" bestaat al, overschrijven?`))) return;
   decks[n] = decks[md]; delete decks[md];
   sel = sel.map(x => x == md ? n : x); md = n; $('mname').textContent = n; save(); render();
+}
+function exportDeck() { // zelfde formaat als de import, dus terug te importeren (voortgang wordt niet meegenomen)
+  const t = '#separator:tab\n#html:false\n' + decks[md].cards.map(c => c.join('\t')).join('\n') + '\n';
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([t], { type: 'text/plain' }));
+  a.download = md + '.txt'; a.click(); URL.revokeObjectURL(a.href);
 }
 function reset() { if (confirm('Voortgang wissen?')) { decks[md].known = {}; save(); } }
 function del() { if (confirm(`"${md}" verwijderen?`)) { delete decks[md]; save(); closeManage(); } }
