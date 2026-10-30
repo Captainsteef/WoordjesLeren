@@ -213,7 +213,7 @@ render();
     catch { const dir = await (await fetch('woordenlijsten/')).text(); files = [...dir.matchAll(/href="([^"?#]+\.(?:txt|tsv))"/gi)].map(m => decodeURIComponent(m[1].split('/').pop())); }
     let added = 0;
     // MAPV ophogen = bij iedereen 1x de lijsten uit de map opnieuw inlezen (eigen aanpassingen daaraan gaan verloren, voortgang blijft)
-    const MAPV = 1, force = (+localStorage.mapv || 0) < MAPV;
+    const MAPV = 2, force = (+localStorage.mapv || 0) < MAPV;
     for (const f of new Set(files)) {
       const name = f.replace(/\.\w+$/, '');
       if (decks[name] && !force) continue;
