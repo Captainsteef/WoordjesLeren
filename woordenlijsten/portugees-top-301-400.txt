@@ -1,100 +1,100 @@
-nascer	to be born
-o centro	the centre, downtown
-o partido	the (political) party
-descobrir, atinar	to discover, understand
-ouvir	to hear
-ligar, liar	to ligate (etm.), connect, switch on
-o interesse	the interest
-o amigo	the friend
-seguinte, subsequente	next in sequence (aj), following, subsequent
-o termo	the term (all meanings)
-mudar, trocar	to mutate (etm.), change, exchange, swap
-a linha	the line
-a medida	the measure (all meanings), measurement
-o teatro	the theatre
-o espaço	the space, room
-o animal	the animal
-santo, sagrado, sacro	saintly, sacred, holy
-o santo	the saint
-o acordo, a concordância, concórdia	the accord, agreement, concordance, concord, harmony
-olhar	to look (at)
-jovem	young (person)
-futuro, vindouro	future, 'coming'
-o local, a localidade	the locale, place, locality
-local (aj)	local
-a falta, carência, carestia, o carecimento, a míngua	the lack, need, scarcity
-a morte	the murder (etm.), death
-político	politician, political
-o banco	the bank (financial institution), bench, car seat
-a posição, a colocação, o posicionamento	the position, placement, positioning
-a rua	the street
-difícil	difficult
-o mercado	the market
-resolver, dirimir	to resolve, decide, settle
-o caminho, a via	the way, road, path
-o jogo	the game
-estudar	to study
-a igreja	the church
-formar	to form, create, educate, graduate
-surgir, surdir	to surge (etm.), emerge, arise
-lembrar, relembrar, rememorar	to remember, remind, recall
-representar	to represent
-o negócio	the negotiation (etm.), business, deal
-a semana	the week
-a luz	the light
-contrário	contrary, opposite, enemy
-bastante, assaz	a lot, enough, 'ad satie'
-pessoal	personal, personnel
-a realidade	the reality, real life
-explicar	to explicate, explain
-mal	poorly, hardly
-militar	military, soldier
-seis	six
-a empresa	the enterprise (etm.), company
-o pé	the foot, tree root
-perceber	to perceive, understand (ep)
-ajudar	to help
-a ordem	the order
-defender	to defend
-ocorrer	to occur
-principal	principal, main
-o assunto, o tema, tópico	the assumpt (obs.), subject, theme, topic
-o passo	the pace (etm.), step
-portanto	'for so much', therefore
-a atividade	the activity
-aceitar	to accept
-a direção	the direction
-a necessidade	the necessity
-dez	ten
-o ministro	the minister
-a qualidade	the quality
-realizar	to realize, fulfil, make happen
-a função	the function
-o olho	the eye
-o respeito	the respect
-tirar, retirar, sacar, arredar	to take out, remove, retire (etm.), withdraw, draw (e.g. gun)
-a cima, o cimo, a cimeira (ep), o cume	the highest point, peak, summit (politics), top
-o mar	the sea
-natural	natural
-a costa, o litoral	the coast, littoral
-a peça	the piece, spare part, theatrical play, cannon
-as costas, o dorso, costado	the back (of a person), dorsal area (etm.), side (of the body)
-a área	the area
-lançar	to launch, throw, send out
-o preço	the price
-correr	to run
-a experiência	the experience, experiment
-o norte	the north
-o princípio	the principle, start, beginning
-o autor	the author
-o curso	the course, learning program, path, route, watercourse
-crescer, acrescer, acrescentar	to grow, grow up, increase, add to sth, accrue
-aumentar	to augment, increase
-a decisão	the decision
-a câmara	the chamber, city council, photo camera (ep)
-andar	to go, walk, ride
-o sistema	the system
-a vontade, o grado	the will, desire, liking, (de boa v., de bom g.) willingly
-a maioria	the majority
-acompanhar	to accompany
-a viagem	the voyage, trip, journey
+nascer	geboren worden
+o centro	het centrum, de binnenstad
+o partido	de (politieke) partij
+descobrir, atinar	ontdekken, begrijpen
+ouvir	horen
+ligar, liar	verbinden, aanzetten, bellen
+o interesse	de interesse, het belang
+o amigo	de vriend
+seguinte, subsequente	volgende, daaropvolgend
+o termo	de term, het einde
+mudar, trocar	veranderen, verwisselen, ruilen
+a linha	de lijn
+a medida	de maat, de maatregel, de meting
+o teatro	het theater
+o espaço	de ruimte, de plaats
+o animal	het dier
+santo, sagrado, sacro	heilig, gewijd
+o santo	de heilige
+o acordo, a concordância, concórdia	de overeenkomst, het akkoord, de eensgezindheid, de harmonie
+olhar	kijken (naar)
+jovem	jong (persoon)
+futuro, vindouro	toekomstig, komend
+o local, a localidade	de plek, de plaats, de lokaliteit
+local (aj)	lokaal
+a falta, carência, carestia, o carecimento, a míngua	het gebrek, de nood, de schaarste
+a morte	de dood
+político	politicus, politiek
+o banco	de bank (financiële instelling), de bank (zitplaats), de autostoel
+a posição, a colocação, o posicionamento	de positie, de plaatsing, de opstelling
+a rua	de straat
+difícil	moeilijk
+o mercado	de markt
+resolver, dirimir	oplossen, beslissen, beslechten
+o caminho, a via	de weg, het pad
+o jogo	het spel, de wedstrijd
+estudar	studeren
+a igreja	de kerk
+formar	vormen, opleiden, afstuderen
+surgir, surdir	opkomen, ontstaan, opduiken
+lembrar, relembrar, rememorar	zich herinneren, herinneren aan
+representar	vertegenwoordigen, voorstellen
+o negócio	de zaak, het bedrijf, de deal
+a semana	de week
+a luz	het licht
+contrário	tegengesteld, omgekeerd, vijand
+bastante, assaz	genoeg, behoorlijk veel
+pessoal	persoonlijk, personeel
+a realidade	de werkelijkheid, het echte leven
+explicar	uitleggen
+mal	slecht, nauwelijks
+militar	militair, soldaat
+seis	zes
+a empresa	het bedrijf, de onderneming
+o pé	de voet, de wortel van een boom
+perceber	opmerken, begrijpen (ep)
+ajudar	helpen
+a ordem	de orde, de volgorde, het bevel
+defender	verdedigen
+ocorrer	voorkomen, gebeuren
+principal	hoofd-, voornaamste
+o assunto, o tema, tópico	het onderwerp, het thema
+o passo	de stap, de pas
+portanto	dus, daarom
+a atividade	de activiteit
+aceitar	accepteren
+a direção	de richting, de leiding
+a necessidade	de noodzaak, de behoefte
+dez	tien
+o ministro	de minister
+a qualidade	de kwaliteit
+realizar	realiseren, verwezenlijken, laten gebeuren
+a função	de functie
+o olho	het oog
+o respeito	het respect
+tirar, retirar, sacar, arredar	eruit halen, verwijderen, terugtrekken, opnemen, trekken (bijv. wapen)
+a cima, o cimo, a cimeira (ep), o cume	het hoogste punt, de piek, de top (politiek), de bovenkant
+o mar	de zee
+natural	natuurlijk
+a costa, o litoral	de kust
+a peça	het stuk, het onderdeel, het toneelstuk, het kanon
+as costas, o dorso, costado	de rug (van een persoon), het rugvlak, de zijde (van het lichaam)
+a área	het gebied, de oppervlakte
+lançar	lanceren, gooien, uitbrengen
+o preço	de prijs
+correr	rennen, lopen
+a experiência	de ervaring, het experiment
+o norte	het noorden
+o princípio	het principe, de start, het begin
+o autor	de auteur, de schrijver
+o curso	de cursus, de opleiding, de route, het verloop, de waterloop
+crescer, acrescer, acrescentar	groeien, opgroeien, toenemen, toevoegen, aangroeien
+aumentar	vergroten, toenemen, verhogen
+a decisão	de beslissing
+a câmara	de kamer, de gemeenteraad, de camera (ep)
+andar	gaan, lopen, rijden
+o sistema	het systeem
+a vontade, o grado	de wil, het verlangen, de zin, (de boa v., de bom g.) graag
+a maioria	de meerderheid
+acompanhar	begeleiden, vergezellen
+a viagem	de reis, de trip

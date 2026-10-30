@@ -1,100 +1,100 @@
-o	1) as definite article: the, 2) as direct object: you, him, it
-de	of, from
-em	in, on
-e	and
-que	that, than, what
-ser	to be (permanently)
-um	a, one
-por	by, through, for
-para	to, for, in order to
-a	1) to, at, 2) as definite article: the, 3) as direct object: you, her, it
-não	no, not
-com	with
-ter	to have
-se	1) reflexive pronoun (ela viu-se no espelho = she saw herself in the mirror), 2) if, in case
-seu	your, yours, his, hers, its, their, theirs
-como	how, like, as
-estar	to be (temporarily)
-mais	more, most
-mas	but
-fazer	to do, make
-poder	to can, be able
-este, isto, isto (bp)!	this (near the speaker), that´s right!
-ou	or, either
-ele	as subject or propositional pronoun: he, it
-esse, isso, isso!	that (near the listener), that's right!
-outro	other, another
-muito	much, very, many
-haver	to have, there is, (h. de) have to
-ir	to go
-todo	all, every, (t. a gente) everyone
-eu	I
-já	already, now
-dizer	to tell, say
-o ano	the year
-dar	to give
-também	also, too, as well
-quando, aquando	when, at the time
-mesmo	same (aj), really (av), simply (av)
-ver	to see
-até	until, even, up to
-dois	two
-ainda, inda (pop.)	still, yet
-grande, grandioso, magno	grand, great, grandiose, big
-a vez	the time, turn
-algum (m), alguma (f), alguns (m, pl), algumas (f, pl)	some, any
-ela	as subject or propositional pronoun: she, it
-depois, após	after
-entre	between, among
-o dia	the day
-só (aj), sozinho	sole (etm.), only, just, alone, lonely
-aquele, aquilo	that (away from speaker and listener)
-sobre	super (etm.), over, above, upon, about
-primeiro	first
-ficar	to stay, be located, be, become
-dever	to have the duty of, should, ought
-passar	to pass, go through, happen
-saber	to know, find out, (s. a) taste of (ep)
-assim	thus, so, like this
-querer	to want
-onde	where
-novo	new
-sem	without
-vir	to come
-o tempo	the time, weather
-bem	well, very
-porque	because
-meu	my, mine
-a pessoa	the person
-a coisa, o coiso	the thing
-então	then, so
-quem	whom, who
-sempre	always
-qual	which
-chegar	to arrive
-a vida	the life
-pouco	little, few
-o homem	the man
-a parte	the part
-tudo	everything, everyone (bp, slang)
-a casa	the house, home
-agora	now, nowadays
-lhe	you, him, her
-o trabalho, o labor, a laboração, labuta, a lide	the work, labour, hard labour, toil, drudgery
-nosso	our
-levar	to carry away, take with oneself, cheat
-pois	so, since, because
-deixar	to leave, allow
-bom (m), boa (f)	good
-começar	to commence, begin, start
-próprio	proper, own, very own
-maior	greater, larger
-o caso	the case, (c.) in case, (c.) if
-falar	to speak, talk
-o país	the country
-a forma	the form, way
-cada	each, every
-hoje (av)	today (av), (h. em dia) nowadays
-nem	neither, not, nor
-três	three
-olá, oi (bp)	hi, hello
+o	1) als bepaald lidwoord: de/het, 2) als lijdend voorwerp: je, hem, het
+de	van, uit
+em	in, op
+e	en
+que	dat, dan, wat
+ser	zijn (blijvend)
+um	een
+por	door, via, voor
+para	naar, voor, om te
+a	1) naar, aan, 2) als bepaald lidwoord: de/het, 3) als lijdend voorwerp: je, haar, het
+não	nee, niet
+com	met
+ter	hebben
+se	1) wederkerend voornaamwoord (ela viu-se no espelho = ze zag zichzelf in de spiegel), 2) als, indien
+seu	jouw, uw, zijn, haar, hun
+como	hoe, zoals, als
+estar	zijn (tijdelijk)
+mais	meer, meest
+mas	maar
+fazer	doen, maken
+poder	kunnen, mogen
+este, isto, isto (bp)!	deze/dit (dicht bij de spreker), dat klopt!
+ou	of
+ele	als onderwerp of na voorzetsel: hij, het
+esse, isso, isso!	die/dat (dicht bij de luisteraar), dat klopt!
+outro	ander, andere
+muito	veel, erg, heel
+haver	hebben, er is/zijn, (h. de) moeten
+ir	gaan
+todo	alle, elk, (t. a gente) iedereen
+eu	ik
+já	al, nu
+dizer	zeggen
+o ano	het jaar
+dar	geven
+também	ook
+quando, aquando	wanneer, toen
+mesmo	zelfde (bn), echt (bw), gewoon (bw)
+ver	zien
+até	tot, zelfs, tot aan
+dois	twee
+ainda, inda (pop.)	nog, nog steeds
+grande, grandioso, magno	groot, geweldig, grandioos
+a vez	de keer, de beurt
+algum (m), alguma (f), alguns (m, pl), algumas (f, pl)	enkele, sommige, enig
+ela	als onderwerp of na voorzetsel: zij, het
+depois, após	na, daarna
+entre	tussen, onder
+o dia	de dag
+só (aj), sozinho	enig, alleen, slechts, eenzaam
+aquele, aquilo	die/dat (ver van spreker en luisteraar)
+sobre	over, boven, op, aangaande
+primeiro	eerste
+ficar	blijven, zich bevinden, zijn, worden
+dever	moeten, verplicht zijn, zou moeten
+passar	voorbijgaan, doormaken, gebeuren
+saber	weten, te weten komen, (s. a) smaken naar (ep)
+assim	dus, zo, op deze manier
+querer	willen
+onde	waar
+novo	nieuw
+sem	zonder
+vir	komen
+o tempo	de tijd, het weer
+bem	goed, zeer
+porque	omdat
+meu	mijn
+a pessoa	de persoon
+a coisa, o coiso	het ding
+então	dan, dus
+quem	wie
+sempre	altijd
+qual	welke
+chegar	aankomen
+a vida	het leven
+pouco	weinig
+o homem	de man
+a parte	het deel
+tudo	alles, iedereen (bp, slang)
+a casa	het huis, thuis
+agora	nu, tegenwoordig
+lhe	(aan) je/u, hem, haar
+o trabalho, o labor, a laboração, labuta, a lide	het werk, de arbeid, zwaar werk, gezwoeg
+nosso	ons, onze
+levar	meenemen, wegbrengen, bedriegen
+pois	dus, want, omdat
+deixar	laten, verlaten, toestaan
+bom (m), boa (f)	goed
+começar	beginnen, starten
+próprio	eigen, gepast, zelf
+maior	groter, grootst
+o caso	het geval, (c.) in geval dat, (c.) als
+falar	spreken, praten
+o país	het land
+a forma	de vorm, de manier
+cada	elk, ieder
+hoje (av)	vandaag (bw), (h. em dia) tegenwoordig
+nem	noch, niet, ook niet
+três	drie
+olá, oi (bp)	hoi, hallo
