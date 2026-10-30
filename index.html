@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="nl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Woordjes leren</title>
+<style>
+  body{font:16px system-ui;margin:0;background:#f4f4f8;color:#222}
+  button,input{font:inherit;padding:8px 12px;border-radius:8px;border:1px solid #bbb;background:#fff;color:inherit}
+  button{cursor:pointer} button.p{background:#3b6fe0;color:#fff;border:0}
+  #app{display:grid;grid-template-columns:auto 1fr;min-height:100vh}
+  @media(max-width:640px){#app{grid-template-columns:1fr}}
+  aside{background:#fff;padding:16px;min-width:260px;max-width:45vw;border-right:1px solid #ddd}
+  main{padding:16px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto}
+  h1{font-size:1.2em;margin:0 0 12px}
+  .deck{display:flex;align-items:center;gap:6px;margin:4px 0}
+  .deck label{flex:1;overflow-wrap:anywhere;cursor:pointer}.deck button{flex:none}
+  .deck button{padding:4px 8px;font-size:.85em}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .row>input{flex:1;min-width:120px}
+  #list .row{margin:4px 0;flex-wrap:nowrap}#list input{min-width:0}
+  #card{background:#fff;border-radius:16px;box-shadow:0 2px 10px #0002;min-height:180px;display:flex;
+    align-items:center;justify-content:center;text-align:center;padding:24px;font-size:1.5em;cursor:pointer;user-select:none}
+  #card.back{background:#eef4ff;font-size:1.2em}
+  .info{color:#666;text-align:center;margin:8px}
+  @media(prefers-color-scheme:dark){body{background:#181820;color:#eee}aside{background:#20202a;border-color:#333}
+    button,input{background:#2a2a35;border-color:#555}button.p{background:#3b6fe0}
+    #card{background:#2a2a35}#card.back{background:#26324d}.info{color:#aaa}}
+</style>
+<div id="app">
+  <aside>
+    <h1>Woordjes leren</h1>
+    <div id="decks"></div>
+    <div class="row">
+      <button onclick="file.click()">+ Importeer .txt</button>
+      <input type="file" id="file" accept=".txt,.tsv" multiple hidden>
+    </div>
+    <div class="row">
+      <label><input type="checkbox" id="rev"> omgekeerd</label>
+      <label><input type="checkbox" id="all"> ook gekende</label>
+    </div>
+  </aside>
+
+  <main id="study">
+    <div id="card" onclick="flip()"></div>
+    <div id="info" class="info"></div>
+    <div class="row" style="justify-content:center">
+      <button onclick="answer(false)">✗ Nog niet</button>
+      <button class="p" onclick="answer(true)">✓ Weet ik</button>
+    </div>
+  </main>
+
+  <main id="manage" hidden>
+    <div class="row">
+      <button onclick="closeManage()">← Terug</button>
+      <b id="mname" style="align-self:center;flex:1"></b>
+    </div>
+    <div class="row">
+      <button onclick="rename()">Hernoemen</button>
+      <button onclick="reset()">Voortgang wissen</button>
+      <button onclick="del()">Lijst verwijderen</button>
+    </div>
+    <form class="row" onsubmit="add(event)">
+      <input id="f" placeholder="Voorkant" required>
+      <input id="b" placeholder="Achterkant" required>
+      <button class="p">Toevoegen</button>
+    </form>
+    <input id="q" placeholder="Zoek in lijst…" oninput="manageList()" style="width:100%;box-sizing:border-box">
+    <div id="list"></div>
+  </main>
+</div>
+
+<script>
+// decks: {naam: {cards:[[voor,achter]], known:{index:1}}}; sel: geselecteerde namen; md: lijst die beheerd wordt
+let decks = {}, sel = [], md = null, cur = null, shown = false, queue = [];
+try { decks = JSON.parse(localStorage.decks || '{}'); sel = JSON.parse(localStorage.sel || '[]'); } catch {}
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const save = () => { try { localStorage.decks = JSON.stringify(decks); localStorage.sel = JSON.stringify(sel); } catch { alert('Opslaan mislukt (opslag vol?)'); } };
+
+function parse(text) { // Anki-export: regels met # overslaan, tab-gescheiden
+  return text.split(/\r?\n/).filter(l => l && l[0] != '#').map(l => l.split('\t')).filter(c => c.length >= 2 && c[0] && c[1]);
+}
+function addDeck(name, cards) { decks[name] = { cards, known: {} }; if (!sel.includes(name)) sel.push(name); }
+
+$('file').onchange = async e => {
+  for (const f of e.target.files) {
+    const cards = parse(await f.text());
+    if (cards.length) addDeck(f.name.replace(/\.\w+$/, ''), cards);
+  }
+  e.target.value = ''; save(); render();
+};
+
+// ---- zijbalk ----
+function render() {
+  sel = sel.filter(n => decks[n]);
+  $('decks').innerHTML = Object.keys(decks).map((n, i) => `<div class="deck">
+    <input type="checkbox" id="c${i}" ${sel.includes(n) ? 'checked' : ''} onchange="toggle(${i})">
+    <label for="c${i}" title="${esc(n)}">${esc(n)} <small>(${decks[n].cards.length})</small></label>
+    <button onclick="openManage(${i})">Beheren</button></div>`).join('') || '<p class="info">Nog geen lijsten</p>';
+  next(true);
+}
+function toggle(i) {
+  const n = Object.keys(decks)[i], k = sel.indexOf(n);
+  k < 0 ? sel.push(n) : sel.splice(k, 1);
+  save(); next(true);
+}
+
+// ---- oefenen over alle geselecteerde lijsten ----
+function next(rebuild) {
+  shown = false;
+  if (!sel.length) { $('card').textContent = Object.keys(decks).length ? 'Selecteer links een of meer lijsten' : 'Importeer een .txt bestand om te beginnen'; $('card').className = ''; $('info').textContent = ''; cur = null; return; }
+  if (rebuild || !queue.length) {
+    queue = [];
+    for (const n of sel) decks[n].cards.forEach((_, i) => { if ($('all').checked || !decks[n].known[i]) queue.push([n, i]); });
+    for (let i = queue.length; i > 1;) { const j = Math.random() * i-- | 0; [queue[i], queue[j]] = [queue[j], queue[i]]; }
+    queue = queue.slice(0, 50); // ponytail: sessie van 50 kaarten, daarna automatisch nieuwe ronde
+  }
+  cur = queue.pop();
+  const tot = sel.reduce((s, n) => s + decks[n].cards.length, 0), kn = sel.reduce((s, n) => s + Object.keys(decks[n].known).length, 0);
+  $('info').textContent = `${kn} / ${tot} gekend · nog ${tot - kn}`;
+  show();
+}
+function show() {
+  if (!cur) { $('card').textContent = '🎉 Alles gekend!'; $('card').className = ''; return; }
+  const [f, b] = decks[cur[0]].cards[cur[1]];
+  $('card').textContent = (shown != $('rev').checked) ? b : f;
+  $('card').className = shown ? 'back' : '';
+}
+function flip() { if (cur) { shown = !shown; show(); } }
+function answer(ok) {
+  if (!cur) return;
+  const k = decks[cur[0]].known;
+  if (ok) k[cur[1]] = 1; else delete k[cur[1]];
+  save(); next();
+}
+
+// ---- beheren ----
+function openManage(i) { md = Object.keys(decks)[i]; $('q').value = ''; $('study').hidden = true; $('manage').hidden = false; $('mname').textContent = md; manageList(); }
+function closeManage() { md = null; $('manage').hidden = true; $('study').hidden = false; render(); }
+
+function manageList() { // toont max 100 treffers; bewerk direct in de velden
+  const d = decks[md], q = $('q').value.toLowerCase(), out = [];
+  for (let i = 0; i < d.cards.length && out.length < 100; i++) {
+    const [f, b] = d.cards[i];
+    if (q && !(f + ' ' + b).toLowerCase().includes(q)) continue;
+    out.push(`<div class="row"><input value="${esc(f)}" onchange="edit(${i},0,this.value)"><input value="${esc(b)}" onchange="edit(${i},1,this.value)"><button onclick="rm(${i})">🗑</button></div>`);
+  }
+  $('list').innerHTML = out.join('') + (out.length == 100 ? '<p class="info">Eerste 100 getoond, gebruik zoeken.</p>' : '');
+}
+function edit(i, side, v) { decks[md].cards[i][side] = v.trim(); save(); }
+function rm(i) {
+  const d = decks[md]; d.cards.splice(i, 1);
+  const k = {}; for (const j in d.known) if (j != i) k[j > i ? j - 1 : j] = 1; // indexen schuiven op
+  d.known = k; save(); manageList();
+}
+function add(e) {
+  e.preventDefault();
+  decks[md].cards.push([$('f').value.trim(), $('b').value.trim()]);
+  $('f').value = $('b').value = ''; $('f').focus(); save(); manageList();
+}
+function rename() {
+  const n = (prompt('Nieuwe naam', md) || '').trim();
+  if (!n || n == md || (decks[n] && !confirm(`"${n}" bestaat al, overschrijven?`))) return;
+  decks[n] = decks[md]; delete decks[md];
+  sel = sel.map(x => x == md ? n : x); md = n; $('mname').textContent = n; save(); render();
+}
+function reset() { if (confirm('Voortgang wissen?')) { decks[md].known = {}; save(); } }
+function del() { if (confirm(`"${md}" verwijderen?`)) { delete decks[md]; save(); closeManage(); } }
+
+$('rev').onchange = $('all').onchange = () => next(true);
+document.onkeydown = e => {
+  if (e.target.tagName == 'INPUT' || md) return;
+  if (e.key == ' ') { e.preventDefault(); flip(); }
+  else if (e.key == 'ArrowRight') answer(true);
+  else if (e.key == 'ArrowLeft') answer(false);
+};
+render();
+
+// Map woordenlijsten/ naast index.html: werkt via een webserver die de mapindex toont (python3 -m http.server).
+// Nieuwe bestanden worden toegevoegd; bestaande lijsten blijven ongemoeid (voortgang/aanpassingen blijven).
+(async () => {
+  try {
+    const dir = await (await fetch('woordenlijsten/')).text(); let added = 0;
+    const files = [...dir.matchAll(/href="([^"?#]+\.(?:txt|tsv))"/gi)].map(m => decodeURIComponent(m[1].split('/').pop()));
+    for (const f of new Set(files)) {
+      const name = f.replace(/\.\w+$/, '');
+      if (decks[name]) continue;
+      const cards = parse(await (await fetch('woordenlijsten/' + encodeURIComponent(f))).text());
+      if (cards.length) { addDeck(name, cards); added++; }
+    }
+    if (added) { save(); if (!md) render(); }
+  } catch {} // geen server of geen map: negeren
+})();
+</script>
