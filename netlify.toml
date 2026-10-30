@@ -1,0 +1,3 @@
+[build]
+  publish = "."
+  command = '''cd woordenlijsten && ls *.txt *.tsv 2>/dev/null | awk 'BEGIN{printf "["} {printf "%s\"%s\"", (NR>1?",":""), $0} END{print "]"}' > index.json'''

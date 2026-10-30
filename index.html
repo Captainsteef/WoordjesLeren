@@ -180,8 +180,11 @@ render();
 // Nieuwe bestanden worden toegevoegd; bestaande lijsten blijven ongemoeid (voortgang/aanpassingen blijven).
 (async () => {
   try {
-    const dir = await (await fetch('woordenlijsten/')).text(); let added = 0;
-    const files = [...dir.matchAll(/href="([^"?#]+\.(?:txt|tsv))"/gi)].map(m => decodeURIComponent(m[1].split('/').pop()));
+    // Netlify toont geen mapindex: daar maakt de build woordenlijsten/index.json (zie netlify.toml)
+    let files;
+    try { const r = await fetch('woordenlijsten/index.json'); if (!r.ok) throw 0; files = await r.json(); }
+    catch { const dir = await (await fetch('woordenlijsten/')).text(); files = [...dir.matchAll(/href="([^"?#]+\.(?:txt|tsv))"/gi)].map(m => decodeURIComponent(m[1].split('/').pop())); }
+    let added = 0;
     for (const f of new Set(files)) {
       const name = f.replace(/\.\w+$/, '');
       if (decks[name]) continue;
