@@ -63,6 +63,7 @@
     </div>
     <div class="row">
       <button onclick="exportDeck()">Exporteer .txt</button>
+      <button onclick="exportPdf()">Exporteer PDF</button>
       <button onclick="rename()">Hernoemen</button>
       <button onclick="reset()">Voortgang wissen</button>
       <button onclick="del()">Lijst verwijderen</button>
@@ -177,6 +178,18 @@ function exportDeck() { // zelfde formaat als de import, dus terug te importeren
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([t], { type: 'text/plain' }));
   a.download = md + '.txt'; a.click(); URL.revokeObjectURL(a.href);
+}
+function exportPdf() { // via het printvenster van de browser: kies daar "Opslaan als PDF"
+  const w = window.open('', '_blank');
+  if (!w) return alert('Sta pop-ups toe om te exporteren.');
+  w.document.write(`<!doctype html><meta charset="utf-8"><title>${esc(md)}</title><style>
+    body{font:11pt system-ui,sans-serif;margin:0;color:#000}h1{font-size:16pt;margin:0 0 4px}p{color:#666;margin:0 0 12px}
+    table{width:100%;border-collapse:collapse}td{padding:4px 0;border-bottom:1px solid #ddd;vertical-align:top}
+    td:first-child{text-align:left;font-weight:600;padding-right:16px}td:last-child{text-align:right}
+    tr{break-inside:avoid}@page{margin:15mm}</style>
+    <h1>${esc(md)}</h1><p>${decks[md].cards.length} woorden</p>
+    <table>${decks[md].cards.map(([f, b]) => `<tr><td>${esc(f)}</td><td>${esc(b)}</td></tr>`).join('')}</table>`);
+  w.document.close(); w.focus(); w.print();
 }
 function reset() { if (confirm('Voortgang wissen?')) { decks[md].known = {}; save(); } }
 function del() { if (confirm(`"${md}" verwijderen?`)) { delete decks[md]; save(); closeManage(); } }
